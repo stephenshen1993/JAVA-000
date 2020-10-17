@@ -1,11 +1,7 @@
-package jvm;
-
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-import java.net.URL;
 
 /**
  * @ClassName : HelloClassLoader  //类名
