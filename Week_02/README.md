@@ -221,7 +221,21 @@ GC总结：
 
 2.写一段代码，使用HttpClient或OkHttp访问 [http://localhost:8801，代码提交到](http://localhost:8801，代码提交到/) github。
 
+这里使用 OkHttp
+
+maven依赖：
+
+```xml
+<dependency>
+	<groupId>com.squareup.okhttp3</groupId>
+	<artifactId>okhttp</artifactId>
+	<version>4.9.0</version>
+</dependency>
 ```
+
+代码如下：
+
+```java
 package com.sxj.week2;
 
 import okhttp3.OkHttpClient;
