@@ -1,0 +1,30 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    name: master
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/java00?characterEncoding=utf-8&useSSL=false
+    username: root
+    password: root
+#    type: com.alibaba.druid.pool.DruidDataSource
+#    druid:
+#      name: master
+#      driver-class-name: com.mysql.cj.jdbc.Driver
+#      url: jdbc:mysql://localhost:3306/java00?characterEncoding=utf-8&useSSL=false
+#      username: root
+#      password: root
+
+# mybatis配置
+mybatis:
+  type-aliases-package: com.stephenshen.raws.mapper
+  configuration:
+    map-underscore-to-camel-case: true
+logging:
+  level:
+    com:
+      stephenshen:
+        raws:
+          mapper: debug
+#  mapper-locations: mappers/**Mapper.xml

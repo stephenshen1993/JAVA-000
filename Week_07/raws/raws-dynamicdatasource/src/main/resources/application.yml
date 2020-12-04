@@ -1,0 +1,51 @@
+server:
+  port: 8081
+
+spring:
+  aop:
+    proxy-target-class: true
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      master:
+        name: master
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://localhost:13307/java00?characterEncoding=utf-8&useSSL=false
+        username: root
+        password:
+      slave:
+        name: slave
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://localhost:13308/java00?characterEncoding=utf-8&useSSL=false
+        username: root
+        password:
+#      # 主库
+#      master:
+#        name: master
+#        driver-class-name: com.mysql.cj.jdbc.Driver
+#        url: jdbc:mysql://localhost:13307/java00?serverTimezone=GMT%2B8&characterEncoding=utf-8&useSSL=false
+#        username: root
+#        password:
+#      # 从库
+#      slave:
+#        name: slave
+#        driver-class-name: com.mysql.cj.jdbc.Driver
+#        url: jdbc:mysql://localhost:13308/java00?serverTimezone=GMT%2B8&characterEncoding=utf-8&useSSL=false
+#        username: root
+#        password:
+#      aop-patterns: com.stephenshen.raws.service.*
+#      driver-class-name: com.mysql.cj.jdbc.Driver
+#      username: root
+#      password:
+#    type: com.alibaba.druid.pool.DruidDataSource
+
+# mybatis配置
+mybatis:
+#  type-aliases-package: com.stephenshen.raws.mapper
+  configuration:
+    map-underscore-to-camel-case: true
+#  mapper-locations: mappers/**Mapper.xml
+logging:
+  level:
+    com:
+      stephenshen: debug
