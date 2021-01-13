@@ -163,7 +163,25 @@ public class JmsActivemqApplication {
 }
 ```
 
-启动后，访问ActiveMQ管控台：http://127.0.0.1:8161/admin/
+#### 测试类
+
+```java
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class JmsActivemqApplicationTests {
+
+    @Autowired
+    private Producer producer;
+
+    @Test
+    public void testProducer(){
+        producer.sendMessage("inbound.topic", "{\"name\":\"John\"} ");
+    }
+
+}
+```
+
+先启动JmsActivemqApplication，再启动测试类，访问ActiveMQ管控台：http://127.0.0.1:8161/admin/
 
 账号:admin	密码: admin
 
