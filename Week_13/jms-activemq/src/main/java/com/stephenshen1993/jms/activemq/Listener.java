@@ -19,11 +19,6 @@ import java.util.Map;
 @Component
 public class Listener {
 
-//    @JmsListener(destination = "inbound.queue")
-//    @SendTo("outbound.queue")
-//    public String receiveMessageFromQueue(final Message jsonMessage) throws JMSException{
-//        return receiveMessage(jsonMessage);
-//    }
 
     @JmsListener(destination = "inbound.topic")
     @SendTo("outbound.topic")
@@ -32,13 +27,11 @@ public class Listener {
     }
 
     public String receiveMessage(final Message jsonMessage) throws JMSException {
-        String messageData = null;
         System.out.println("Received message " + jsonMessage);
         String response = null;
         if(jsonMessage instanceof TextMessage) {
             TextMessage textMessage = (TextMessage)jsonMessage;
-            messageData = textMessage.getText();
-            Map map = new Gson().fromJson(messageData, Map.class);
+            Map map = new Gson().fromJson(textMessage.getText(), Map.class);
             response  = "Hello " + map.get("name");
         }
         return response;

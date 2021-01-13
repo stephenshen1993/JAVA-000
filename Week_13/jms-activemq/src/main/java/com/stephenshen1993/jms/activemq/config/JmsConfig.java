@@ -31,6 +31,7 @@ public class JmsConfig {
     public JmsTemplate jmsTemplate(){
         JmsTemplate template = new JmsTemplate();
         template.setConnectionFactory(connectionFactory());
+        // 开启发布/订阅，默认是点对点
         template.setPubSubDomain(true);
         return template;
     }
@@ -40,6 +41,7 @@ public class JmsConfig {
         DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
         factory.setConnectionFactory(connectionFactory());
         factory.setConcurrency("1-1");
+        // 开启发布/订阅，默认是点对点
         factory.setPubSubDomain(true);
         return factory;
     }

@@ -26,11 +26,13 @@ public class Producer {
 
     public void sendMessage(final String destinationName, final String message) {
         Map map = new Gson().fromJson(message, Map.class);
+        final String textMessage = "Hello" + map.get("name");
+        System.out.println("Sending message " + textMessage + "to queue - " + destinationName);
+
         jmsTemplate.send(destinationName, new MessageCreator() {
 
             public Message createMessage(Session session) throws JMSException {
                 TextMessage textMessage = session.createTextMessage(message);
-                System.out.println("Sending message " + textMessage.getText() + "to destination - " + destinationName);
                 return textMessage;
             }
         });
