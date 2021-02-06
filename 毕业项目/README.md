@@ -101,18 +101,11 @@ rpc与分布式服务化的区别：rpc是技术概念；分布式服务化是�
 
 ### 8)、分布式缓存
 
-- 本地缓存，如HashMap或者ConcurrentHashMap等
-- Hibernate和Mybatis框架的缓存，Guava Cache，Spring注解Cache
-- 分布式缓存，Redis，Memcached
-- 缓存策略：FIFO，LRU，设定过期时间，时间加权
-- 常见问题：缓存穿透（没有命中缓存，请求大量穿透进入数据库），缓存击穿（某个key刚好失效，大量并发请求到这个key），缓存雪崩（大规模缓存失效，请求直接打到数据库上，导致数据库宕机）
-- Redis的5种数据类型：string，hash，list，set，sorted set
-- redis的使用场景
-- redis的连接客户端：jedis，lettuce，redisson
-- Spring和redis的集成，Springdata redis
-- redis的高级功能
-- redis的集群配置和高可用
-- Hazelcast
+缓存的本质是系统各级处理速度不匹配，导致利用空间换时间。利用缓存技术，我们可以简单有效地提升系统性能。
+
+按缓存所处位置分为本地缓存和远程缓存，常见的本地缓存有 java 集合、Hibernate/Mybatis 框架的缓存、Guava Cache、Spring 注解 Cache 等，常见的远程缓存有 Redis 和 Memcached。缓存容量是有限的，所以有了相应的缓存过期策略，常见的有 FIFO 或 LRU、固定过期时间、业务时间加权等。在使用过程中，缓存也会存在缓存穿透、缓存击穿和缓存雪崩三种问题，注意在缓存 key、过期策略、更新策略、数据分布以及熔断限流等方面做足工作以保护缓存。
+
+提到缓存就不得不说当今最主流的 Redis，Redis 有 5 种基本数据类型，分别是 string、hash、list、set、sorted set。Redis 6 以前是单线程，Redis 6 之后是多线程 NIO 模型，这是主要的性能提升点。经过前辈们的使用总结，目前 Redis 有六大使用场景，分别是业务数据缓存、业务数据处理、全局一致计数、高效统计计数、发布订阅与 Stream、分布式锁。
 
 
 
